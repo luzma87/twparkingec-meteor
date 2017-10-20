@@ -14,7 +14,7 @@ meteor npm install --save react-router history
 meteor remove blaze-html-templates
 meteor add static-html
  
-npm install --save react-toolbox
+meteor npm install --save react-toolbox
 ```
 
 ```bash

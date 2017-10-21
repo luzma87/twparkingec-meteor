@@ -14,10 +14,19 @@ meteor npm install --save react-router history
 meteor remove blaze-html-templates
 meteor add static-html
  
-meteor npm install --save react-toolbox
+meteor add semantic:ui
+meteor remove standard-minifier-css
+meteor add less juliancwirko:postcss
 ```
 
 ```bash
 meteor npm install
 meteor npm i -g npm 
+meteor
+```
+
+```bash
+meteor mongo
+mongo.db.collection.find()
+mongo.db.collection.remove({})
 ```

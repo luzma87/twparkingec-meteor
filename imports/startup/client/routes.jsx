@@ -1,6 +1,7 @@
 import React from 'react';
 import {Router, Route, Switch, Redirect} from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
+import {Meteor} from 'meteor/meteor'
 
 import App from '../../ui/App';
 import NotFound from '../../ui/pages/NotFound';
@@ -15,20 +16,20 @@ export const renderRoutes = () => (
                 <Route path="/login" component={Login}/>
                 <PrivateRoute exact path="/" component={App}/>
                 <PrivateRoute path="/users" component={Users}/>
-                <Route path="*" component={NotFound}/>
+                <PrivateRoute path="*" component={NotFound}/>
             </Switch>
         </div>
     </Router>
 );
 
-const PrivateRoute = ({component: Component, ...rest}) => (
+const PrivateRoute = ({component : Component, ...rest}) => (
     <Route {...rest} render={props => (
-        Meteor.user() ? (
+        Meteor.userId() !== null ? (
             <Component {...props}/>
         ) : (
             <Redirect to={{
-                pathname: '/login',
-                state: {from: props.location}
+                pathname : '/login',
+                state : {from : props.location}
             }}/>
         )
     )}/>
